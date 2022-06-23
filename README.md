@@ -1,7 +1,7 @@
 
 # DocumentCloud Alert Tool
 
-A simply script that easily lets you get email and optionally Slack alerts if there's any documents tshat match the current search query.
+A simply script that easily lets you get email and optionally Slack alerts if there's any documents that match the current search query.
 
 ## Files
 
