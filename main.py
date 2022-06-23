@@ -13,8 +13,8 @@ class Alert(AddOn):
             self.set_message(message)
             message.extend([f"{d.title} - {d.canonical_url}\n" for d in documents])
             self.send_mail(f"New documents found!", "\n".join(message))
-            if self.data.get("slack_webhook")
-                SLACK_WEBHOOK = self.data.get("slack_webhook"):
+            if self.data.get("slack_webhook"):
+                SLACK_WEBHOOK = self.data.get("slack_webhook")
                 requests_retry_session().post(
                 SLACK_WEBHOOK, json={"text": f"{subject}\n\n{message}"}
             )
