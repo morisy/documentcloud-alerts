@@ -3,6 +3,8 @@ A test of a DocumentCloud alert Add-On.
 """
 
 from documentcloud.addon import AddOn
+from documentcloud.constants import BULK_LIMIT
+from documentcloud.toolbox import grouper, requests_retry_session
 
 
 class Alert(AddOn):
