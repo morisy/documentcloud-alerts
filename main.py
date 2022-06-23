@@ -9,7 +9,7 @@ from documentcloud.toolbox import grouper, requests_retry_session
 
 class Alert(AddOn):
     def main(self):
-        if not self.documents:
+        if not self.client.documents:
             self.set_message("No documents matching query found.")
             return
         message = "Documents found matching your alert\n"
