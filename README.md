@@ -1,9 +1,7 @@
 
-# DocumentCloud Add-On Example
+# DocumentCloud Alert Tool
 
-This repository contains an example Add-On for DocumentCloud.  It is designed
-to be copied and modified to allow one to easily write Add-Ons to bring custom
-functionality to DocumentCloud.
+A simply script that easily lets you get email and optionally Slack alerts if there's any documents tshat match the current search query.
 
 ## Files
 
