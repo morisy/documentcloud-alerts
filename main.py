@@ -12,8 +12,9 @@ class Alert(AddOn):
         documents = self.client.documents.list(id__in=self.documents)
         self.set_message("The alert has started and gotten a list of documents.")
         if documents:
-            message = "New Documents Found Matching Your Alert\n"
-            self.set_message("New Documents Found Matching Your Alert")
+            documentCount = documents.len()
+            message = f"{documentCount} documents found matching your alert\n"
+            self.set_message(message)
             for d in documents:
                 message += f"{d.title} - {d.canonical_url}\n"
             self.send_mail("New documents found!", message)
