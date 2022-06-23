@@ -8,6 +8,7 @@ from documentcloud.addon import AddOn
 class Alert(AddOn):
     def main(self):
         documents = self.client.documents.list(id__in=self.documents)
+        self.set_message(f"The alert has started and gotten a list of documents.\n")
         if documents:
             message = [f"New Documents Found Matching Your Alert\n"]
             self.set_message(message)
