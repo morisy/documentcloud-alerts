@@ -1,10 +1,5 @@
 """
-This is a hello world add-on for DocumentCloud.
-
-It demonstrates how to write a add-on which can be activated from the
-DocumentCloud add-on system and run using Github Actions.  It receives data
-from DocumentCloud via the request dispatch and writes data back to
-DocumentCloud using the standard API
+A test of a DocumentCloud alert Add-On.
 """
 
 from documentcloud.addon import AddOn
@@ -18,7 +13,8 @@ class Alert(AddOn):
             self.set_message(message)
             message.extend([f"{d.title} - {d.canonical_url}\n" for d in documents])
             self.send_mail(f"New documents found!", "\n".join(message))
-            if SLACK_WEBHOOK:
+            if self.data.get("slack_webhook")
+                SLACK_WEBHOOK = self.data.get("slack_webhook"):
                 requests_retry_session().post(
                 SLACK_WEBHOOK, json={"text": f"{subject}\n\n{message}"}
             )
