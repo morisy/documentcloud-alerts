@@ -11,6 +11,7 @@ class Alert(AddOn):
     def main(self):
         documents = self.client.documents.list(id__in=self.documents)
         self.set_message("The alert has started and gotten a list of documents.")
+         self.set_message(type(documents))
         if documents:
             documentCount = documents.len()
             message = f"{documentCount} documents found matching your alert\n"
