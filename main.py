@@ -11,7 +11,7 @@ class Alert(AddOn):
         self.set_message(f"The alert has started and gotten a list of documents.\n")
         if documents:
             message = "New Documents Found Matching Your Alert\n"
-            self.set_message(message)
+            self.set_message("New Documents Found Matching Your Alert")
             message.extend([f"{d.title} - {d.canonical_url}\n" for d in documents])
             self.send_mail("New documents found!", message)
             if self.data.get("slack_webhook"):
