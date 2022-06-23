@@ -12,8 +12,6 @@ class Alert(AddOn):
         if not self.client.documents:
             self.set_message("No documents matching query found.")
             return
-        numDocs = str(len(self.client.documents.list(id__in=self.documents)))
-        message = f"{numDocs} documents found matching your alert\n"
         self.set_message(message)
         for document in self.client.documents.list(id__in=self.documents):
             self.set_message(f"Working on setting up an alert for {document.title}.")
