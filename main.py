@@ -14,12 +14,13 @@ class Alert(AddOn):
         if documents:
             message = "New Documents Found Matching Your Alert\n"
             self.set_message("New Documents Found Matching Your Alert")
-            message += str(f"{d.title} - {d.canonical_url}\n" for d in documents)
+            for d in documents:
+                message += f"{d.title} - {d.canonical_url}\n"
             self.send_mail("New documents found!", message)
             if self.data.get("slack_webhook"):
                 SLACK_WEBHOOK = self.data.get("slack_webhook")
                 requests_retry_session().post(
-                SLACK_WEBHOOK, json={"text": f"New DocumentCloud docs match your alert \n\n{message}"}
+                SLACK_WEBHOOK, json={"text": message}
             )
 
 
