@@ -17,5 +17,8 @@ properties:
     title: Slack Webhook
     # a string is text
     type: string
-
-
+eventOptions:
+  events:
+    - hourly
+    - daily
+    - weekly
