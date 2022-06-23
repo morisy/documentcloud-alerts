@@ -10,32 +10,19 @@ DocumentCloud using the standard API
 from documentcloud.addon import AddOn
 
 
-class HelloWorld(AddOn):
-    """An example Add-On for DocumentCloud."""
-
+class Alert(AddOn):
     def main(self):
-        """The main add-on functionality goes here."""
-        # fetch your add-on specific data
-        name = self.data.get("name", "world")
-
-        self.set_message("Hello World start!")
-
-        # add a hello note to the first page of each selected document
-        if self.documents:
-            for document in self.client.documents.list(id__in=self.documents):
-                document.annotations.create(f"Hello {name}!", 0)
-        elif self.query:
-            documents = self.client.documents.search(self.query)[:3]
-            for document in documents:
-                document.annotations.create(f"Hello {name}!", 0)
-
-        with open("hello.txt", "w+") as file_:
-            file_.write("Hello world!")
-            self.upload_file(file_)
-
-        self.set_message("Hello World end!")
-        self.send_mail("Hello World!", "We finished!")
+        documents = self.client.documents.list(id__in=self.documents):
+        if documents:
+            message = [f"New Documents Found Matching Your Alert\n"]
+            self.set_message(message)
+            message.extend([f"{d.title} - {d.canonical_url}\n" for d in documents])
+            self.send_mail(f"New documents found!", "\n".join(message))
+            if SLACK_WEBHOOK:
+                requests_retry_session().post(
+                SLACK_WEBHOOK, json={"text": f"{subject}\n\n{message}"}
+            )
 
 
 if __name__ == "__main__":
-    HelloWorld().main()
+    Alert().main()
