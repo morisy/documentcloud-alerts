@@ -16,7 +16,7 @@ class Alert(AddOn):
             if self.data.get("slack_webhook"):
                 SLACK_WEBHOOK = self.data.get("slack_webhook")
                 requests_retry_session().post(
-                SLACK_WEBHOOK, json={"text": f"{subject}\n\n{message}"}
+                SLACK_WEBHOOK, json={"text": f"New DocumentCloud docs match your alert \n\n{message}"}
             )
 
 
