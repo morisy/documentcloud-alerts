@@ -10,7 +10,7 @@ documents:
 # Properties are the fields for your form
 properties:
   # the key is the name of the variable that will be returned to your code
-    search:
+  search:
     # the title is what will be shown as the form label
     title: Search Query (can include any text you use in a regular search):
     # a string is text
