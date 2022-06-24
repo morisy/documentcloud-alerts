@@ -12,7 +12,7 @@ class Alert(AddOn):
         if not self.client.documents:
             self.set_message("No documents matching query found.")
             return
-        self.set_message(message)
+        self.set_message("Some documents matched this alert setting!")
         for document in self.client.documents.list(id__in=self.documents):
             self.set_message(f"Working on setting up an alert for {document.title}.")
             message += f"{document.title} - {document.canonical_url}\n"
