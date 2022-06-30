@@ -6,7 +6,7 @@ description: This Add-On can be used to set up a recurring alert that will email
 type: object
 # How does this add-on accept documents
 # If more than one type is specified, the user will be prompted to choose one
-documents:
+documents: []
 # Properties are the fields for your form
 properties:
   # the key is the name of the variable that will be returned to your code
