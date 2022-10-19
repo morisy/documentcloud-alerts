@@ -9,7 +9,7 @@ from documentcloud.toolbox import grouper, requests_retry_session
 
 class Alert(AddOn):
     def main(self):
-        searchString = self.data.get("search") + " +created_at:[NOW-1HOUR TO *]"
+        searchString = self.data.get("search", "") + " +created_at:[NOW-1HOUR TO *]"
         doc_list = self.client.documents.search(searchString)
         if not doc_list:
             self.set_message("No documents matching query found.")
